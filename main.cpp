@@ -1,15 +1,15 @@
 #include <QApplication>
 #include <unistd.h>
 #include <iostream>
-#include "gummiworld.h"
+#include "gamecontrol.h"
 
 
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    GummiWorld world;
+    GameControl game;
 
-    while(world.isRunning()){
+    while(game.isRunning()){
         app.processEvents();
 
         // 24pfs

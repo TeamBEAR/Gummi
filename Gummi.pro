@@ -7,9 +7,15 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
     main.cpp \
-    scenario.cpp \
-    gummiworld.cpp
+    gamecontrol.cpp \
+    eventhandler.cpp \
+    gamescene.cpp \
+    renderable.cpp \
+    gameview.cpp
 
 HEADERS += \
-    scenario.h \
-    gummiworld.h
+    gamecontrol.h \
+    eventhandler.h \
+    gamescene.h \
+    renderable.h \
+    gameview.h
