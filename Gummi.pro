@@ -10,12 +10,14 @@ SOURCES += \
     gamecontrol.cpp \
     eventhandler.cpp \
     gamescene.cpp \
-    renderable.cpp \
-    gameview.cpp
+    gameview.cpp \
+    movable.cpp \
+    agent.cpp
 
 HEADERS += \
     gamecontrol.h \
     eventhandler.h \
     gamescene.h \
-    renderable.h \
-    gameview.h
+    gameview.h \
+    movable.h \
+    agent.h

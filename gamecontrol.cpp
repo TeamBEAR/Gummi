@@ -1,4 +1,5 @@
 #include "gamecontrol.h"
+#include "agent.h"
 
 GameControl::GameControl(){
 
@@ -13,6 +14,10 @@ GameControl::GameControl(){
         }
     }
     view->setWindowState(Qt::WindowMaximized);
+    Agent *player = new Agent(QSize(view->width(),
+                                    view->height()));
+    scene->addItem(player);
+    player->goUp();
 }
 
 bool GameControl::isRunning(){
