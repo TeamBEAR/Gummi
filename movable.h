@@ -5,6 +5,7 @@
 #include <QPointF>
 #include <QObject>
 #include <QGraphicsItem>
+#include <QPropertyAnimation>
 
 class Movable : public QObject, public QGraphicsItem
 {
@@ -12,7 +13,12 @@ class Movable : public QObject, public QGraphicsItem
     Q_PROPERTY(QPointF pos READ pos WRITE setPos)
     private:
         bool looping;
+        bool goingUp;
+        bool goingDown;
+        bool goingLeft;
+        bool goingRight;
         float speed;
+        QPropertyAnimation *animation;
     protected:
         QSize windowSize;
         QSize objectSize;
@@ -24,7 +30,10 @@ class Movable : public QObject, public QGraphicsItem
         void goDown();
         void goLeft();
         void goRight();
+        void stop();
+        void start();
         void toggleLooping();
+        QPointF getNextPos();
 
     public slots:
         void refreshPos();

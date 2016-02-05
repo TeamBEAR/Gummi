@@ -15,7 +15,7 @@ class Agent : public Movable
         int penWidth;
     public:
         Agent(QSize windowSize,
-              QSize agentSize=QSize(100, 100));
+              QSize agentSize=QSize(50, 50));
         void paint(QPainter *painter,
                    const QStyleOptionGraphicsItem *option,
                    QWidget *widget);

@@ -22,17 +22,22 @@ GameControl::GameControl(){
     }
 
     // Maximize view's associated widget
-    view->setWindowState(Qt::WindowMaximized);
+    // TODO: Automatically maximize,
+    // read Resize event to calculate final
+    // window size
+    //view->setWindowState(Qt::WindowMaximized);
+    view->window()->setFixedWidth(800);
+    view->window()->setFixedHeight(600);
 
     // Create a demo player
     // We pass the window's size to know
     // where its borders are
-    Agent *player = new Agent(QSize(view->width(),
-                                    view->height()));
+    Agent *player = new Agent(QSize(800, 600));
 
     // Add demo player to the scene
     scene->addItem(player);
-    player->goUp();
+    //player->goUp();
+    //player->goRight();
 }
 
 bool GameControl::isRunning(){
