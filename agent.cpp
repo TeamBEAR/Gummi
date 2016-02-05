@@ -2,18 +2,13 @@
 
 #include <QBrush>
 #include <QPen>
+#include <unistd.h>
 
 Agent::Agent(QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
-    // Center agent in the parent's coordinate system
     penWidth=2;
-    float horizontalOffset = (agentSize.width()+penWidth)/2;
-    float verticalOffset = (agentSize.height()+penWidth)/2;
-    setPos(QPointF(
-               windowSize.width()/2-horizontalOffset,
-               windowSize.height()/2-verticalOffset)
-           );
+    setPos(QPointF(0, 0));
 }
 
 QRectF Agent::boundingRect() const

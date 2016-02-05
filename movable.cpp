@@ -80,12 +80,12 @@ QPointF Movable::getNextPos(){
 
     // Vertical movement
     if(goingUp){
-        newY = result.y() - speed;
+        newY = result.y() + speed;
         // Check lower limits
         // TODO: Take in account object boundingRectangle
-        if(newY < 0){
+        if(newY > windowSize.height()/2){
             if(looping){
-                result.setY(windowSize.height());
+                result.setY(-windowSize.height()/2);
             }else{
                 stop();
             }
@@ -93,12 +93,12 @@ QPointF Movable::getNextPos(){
             result.setY(newY);
         }
     }else if(goingDown){
-        newY = result.y() + speed;
+        newY = result.y() - speed;
         // Check upper limits
         // TODO: Take in account object boundingRectangle
-        if(newY > windowSize.height()){
+        if(newY < windowSize.height()/2){
             if(looping){
-                result.setY(0);
+                result.setY(windowSize.height()/2);
             }else{
                 stop();
             }
@@ -112,9 +112,9 @@ QPointF Movable::getNextPos(){
         newX = result.x() - speed;
         // Check lower limits
         // TODO: Take in account object boundingRectangle
-        if(newX < 0){
+        if(newX < -windowSize.width()/2){
             if(looping){
-                result.setX(windowSize.width());
+                result.setX(windowSize.width()/2);
             }else{
                 stop();
             }
@@ -126,9 +126,9 @@ QPointF Movable::getNextPos(){
         newX = result.x() + speed;
         // Check upper limits
         // TODO: Take in account object boundingRectangle
-        if(newX > windowSize.width()){
+        if(newX > windowSize.width()/2){
             if(looping){
-                result.setX(0);
+                result.setX(-windowSize.width()/2);
             }else{
                 stop();
             }

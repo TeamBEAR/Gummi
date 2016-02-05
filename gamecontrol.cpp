@@ -26,8 +26,7 @@ GameControl::GameControl(){
     // read Resize event to calculate final
     // window size
     //view->setWindowState(Qt::WindowMaximized);
-    view->window()->setFixedWidth(800);
-    view->window()->setFixedHeight(600);
+    view->window()->setGeometry(QRect(100,100,800,600));
 
     // Create a demo player
     // We pass the window's size to know
@@ -36,8 +35,9 @@ GameControl::GameControl(){
 
     // Add demo player to the scene
     scene->addItem(player);
+
     //player->goUp();
-    //player->goRight();
+    player->goRight();
 }
 
 bool GameControl::isRunning(){
