@@ -6,6 +6,7 @@ Movable::Movable(QSize windowSize,
     QObject(), QGraphicsItem()
 {
     looping = true;
+    speed = 10;
     this->windowSize = windowSize;
     this->objectSize = objectSize;
 }
@@ -19,13 +20,20 @@ void Movable::toggleLooping(){
 }
 
 void Movable::goUp(){
-    double x = pos().x();
 
     QPropertyAnimation *animation = new QPropertyAnimation(this, "pos");
-    animation->setDuration(1000);
+
+    // 25fps
+    animation->setDuration(40);
+
+    //Move one pixel in 1 frame
     animation->setStartValue(pos());
-    animation->setEndValue(QPointF(x,
-                                   -100));
+    animation->setEndValue(QPointF(pos().x(),
+                                   pos().y()-speed));
+    QObject::connect(animation,
+                     SIGNAL(finished()),
+                     this,
+                     SLOT(refreshPos()));
     animation->start();
 }
 
@@ -41,10 +49,10 @@ void Movable::goRight(){
 
 }
 
-/*QPointF Movable::pos() const{
-    return _pos;
+void Movable::refreshPos(){
+    QPropertyAnimation *animation = (QPropertyAnimation*)sender();
+    animation->setStartValue(pos());
+    animation->setEndValue(QPointF(pos().x(),
+                                   pos().y()-speed));
+    animation->start();
 }
-
-void Movable::setPos(QPointF newpos){
-    _pos = newpos;
-}*/

@@ -12,7 +12,7 @@ class Movable : public QObject, public QGraphicsItem
     Q_PROPERTY(QPointF pos READ pos WRITE setPos)
     private:
         bool looping;
-        //QPointF _pos;
+        float speed;
     protected:
         QSize windowSize;
         QSize objectSize;
@@ -25,8 +25,9 @@ class Movable : public QObject, public QGraphicsItem
         void goLeft();
         void goRight();
         void toggleLooping();
-        /*QPointF pos() const;
-        void setPos(QPointF newpos);*/
+
+    public slots:
+        void refreshPos();
 };
 
 #endif // MOVABLE_H

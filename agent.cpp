@@ -6,33 +6,44 @@
 Agent::Agent(QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
+    // Center agent in the parent's coordinate system
+    penWidth=2;
+    float horizontalOffset = (agentSize.width()+penWidth)/2;
+    float verticalOffset = (agentSize.height()+penWidth)/2;
     setPos(QPointF(
-               windowSize.width()/2,
-               windowSize.height()/2)
+               windowSize.width()/2-horizontalOffset,
+               windowSize.height()/2-verticalOffset)
            );
 }
 
 QRectF Agent::boundingRect() const
 {
-    return QRectF(pos().x(), pos().y(),
-                  objectSize.width(),
-                  objectSize.height());
+    // Get agent's bounding rectangle
+    // in item's coordinate system
+    return QRectF(-objectSize.width()/2 - penWidth/2,
+                  -objectSize.height()/2 - penWidth/2,
+                  objectSize.width() + penWidth,
+                  objectSize.height() + penWidth);
 }
 
 void Agent::paint(QPainter *painter,
                   const QStyleOptionGraphicsItem *option,
                   QWidget *widget)
 {
+    // Add a custom brush and pen to painter
     QBrush greenBrush(Qt::green);
     QPen outlinePen(Qt::black);
-    outlinePen.setWidth(2);
+    outlinePen.setWidth(penWidth);
 
     painter->setBrush(greenBrush);
     painter->setPen(outlinePen);
 
-    painter->drawRect(QRectF(pos().x(), pos().y(),
+    // Draw agent as a rectangle in item's coordinate system
+    painter->drawRect(QRectF(pos().x()-objectSize.width()/2 - penWidth/2,
+                             pos().y()-objectSize.height()/2 - penWidth/2,
                              objectSize.width(),
-                             objectSize.height()));
+                             objectSize.height())
+                      );
 }
 
 

@@ -17,6 +17,7 @@ int main(int argc, char **argv)
         usleep(40000);
     }
     return 0;*/
+
     return app.exec();
 
 }
