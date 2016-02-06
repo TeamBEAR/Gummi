@@ -4,21 +4,26 @@
 #include <QPen>
 #include <unistd.h>
 
+#include <iostream>
+
+using namespace std;
+
 Agent::Agent(QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
     penWidth=2;
-    setPos(QPointF(0, 0));
+    setPos(windowSize.width()/2-objectSize.width()/2,
+           windowSize.height()/2-objectSize.height()/2);
 }
 
 QRectF Agent::boundingRect() const
 {
     // Get agent's bounding rectangle
     // in item's coordinate system
-    return QRectF(-objectSize.width()/2 - penWidth/2,
-                  -objectSize.height()/2 - penWidth/2,
-                  objectSize.width() + penWidth,
-                  objectSize.height() + penWidth);
+    return QRectF(0,
+                  0,
+                  objectSize.width(),
+                  objectSize.height());
 }
 
 void Agent::paint(QPainter *painter,
@@ -34,11 +39,7 @@ void Agent::paint(QPainter *painter,
     painter->setPen(outlinePen);
 
     // Draw agent as a rectangle in item's coordinate system
-    painter->drawRect(QRectF(pos().x()-objectSize.width()/2 - penWidth/2,
-                             pos().y()-objectSize.height()/2 - penWidth/2,
-                             objectSize.width(),
-                             objectSize.height())
-                      );
+    painter->drawRect(boundingRect());
 }
 
 

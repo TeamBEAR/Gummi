@@ -75,65 +75,61 @@ void Movable::goRight(){
 
 QPointF Movable::getNextPos(){
     QPointF result(pos());
-    float newY;
-    float newX;
 
     // Vertical movement
     if(goingUp){
-        newY = result.y() + speed;
         // Check lower limits
-        // TODO: Take in account object boundingRectangle
-        if(newY > windowSize.height()/2){
+
+        if(result.y() + objectSize.height() < 0){
             if(looping){
-                result.setY(-windowSize.height()/2);
+                setY(windowSize.height());
+                result.setY(windowSize.height() - speed);
             }else{
                 stop();
             }
         }else{
-            result.setY(newY);
+            result.setY(result.y() - speed);
         }
     }else if(goingDown){
-        newY = result.y() - speed;
         // Check upper limits
-        // TODO: Take in account object boundingRectangle
-        if(newY < windowSize.height()/2){
+
+        if(result.y() > windowSize.height()){
             if(looping){
-                result.setY(windowSize.height()/2);
+                setY(-objectSize.height());
+                result.setY(-objectSize.height() + speed);
             }else{
                 stop();
             }
         }else{
-            result.setY(newY);
+            result.setY(result.y() + speed);
         }
     }
 
     // Horizontal movement
     if(goingLeft){
-        newX = result.x() - speed;
         // Check lower limits
-        // TODO: Take in account object boundingRectangle
-        if(newX < -windowSize.width()/2){
+        if(result.x() + objectSize.width() < 0){
             if(looping){
-                result.setX(windowSize.width()/2);
+                setX(windowSize.width());
+                result.setX(windowSize.width() - speed);
             }else{
                 stop();
             }
         }else{
-            result.setX(newX);
+            result.setX(result.x() - speed);
         }
 
     }else if(goingRight){
-        newX = result.x() + speed;
         // Check upper limits
-        // TODO: Take in account object boundingRectangle
-        if(newX > windowSize.width()/2){
+        if(result.x() > windowSize.width()){
             if(looping){
-                result.setX(-windowSize.width()/2);
+                setX(-objectSize.width());
+                result.setX(-objectSize.width() + speed);
             }else{
                 stop();
             }
         }else{
-            result.setX(newX);
+            result.setX(result.x() + speed);
         }
     }
     return result;
@@ -141,8 +137,9 @@ QPointF Movable::getNextPos(){
 
 void Movable::refreshPos(){
     if(goingUp || goingDown || goingLeft || goingRight){
+        QPointF nextPos = getNextPos();
         animation->setStartValue(pos());
-        animation->setEndValue(getNextPos());
+        animation->setEndValue(nextPos);
         animation->start();
     }
 }

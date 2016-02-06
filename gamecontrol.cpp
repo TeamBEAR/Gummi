@@ -10,6 +10,7 @@ GameControl::GameControl(){
     scene = new GameScene();
     if(scene != NULL){
 
+        scene->setSceneRect(QRectF(0, 0, 800, 600));
         // Adds the created scene to a view
         view = new GameView(this->scene);
         if(view != NULL){
@@ -36,7 +37,7 @@ GameControl::GameControl(){
     // Add demo player to the scene
     scene->addItem(player);
 
-    //player->goUp();
+    player->goUp();
     player->goRight();
 }
 
