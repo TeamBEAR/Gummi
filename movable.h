@@ -23,8 +23,8 @@ class Movable : public QObject, public QGraphicsItem
         QSize windowSize;
         QSize objectSize;
     public:
-        Movable(QSize windowSize,
-                QSize objectSize);
+        explicit Movable(QSize windowSize,
+                         QSize objectSize);
         bool isLooping();
         void goUp();
         void goDown();

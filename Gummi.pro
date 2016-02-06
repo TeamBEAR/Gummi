@@ -12,7 +12,9 @@ SOURCES += \
     gamescene.cpp \
     gameview.cpp \
     movable.cpp \
-    agent.cpp
+    agent.cpp \
+    growable.cpp \
+    radar.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -20,4 +22,6 @@ HEADERS += \
     gamescene.h \
     gameview.h \
     movable.h \
-    agent.h
+    agent.h \
+    growable.h \
+    radar.h

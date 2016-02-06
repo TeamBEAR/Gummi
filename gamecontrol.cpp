@@ -1,5 +1,6 @@
 #include "gamecontrol.h"
 #include "agent.h"
+#include "radar.h"
 
 GameControl::GameControl(){
 
@@ -33,12 +34,17 @@ GameControl::GameControl(){
     // We pass the window's size to know
     // where its borders are
     Agent *player = new Agent(QSize(800, 600));
+    Radar *radar = new Radar(QSizeF(1, 1),
+                             50);
+
 
     // Add demo player to the scene
     scene->addItem(player);
+    scene->addItem(radar);
 
     player->goUp();
     player->goRight();
+    radar->start();
 }
 
 bool GameControl::isRunning(){

@@ -4,10 +4,6 @@
 #include <QPen>
 #include <unistd.h>
 
-#include <iostream>
-
-using namespace std;
-
 Agent::Agent(QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
