@@ -27,8 +27,8 @@ void Radar::setHeight(float newHeight){
 }
 
 QRectF Radar::boundingRect() const{
-    return QRectF(0,
-                  0,
+    return QRectF(-objectSize.width()/2,
+                  -objectSize.height()/2,
                   objectSize.width(),
                   objectSize.height());
 }
