@@ -10,6 +10,17 @@ Agent::Agent(QSize windowSize, QSize agentSize):
     penWidth=2;
     setPos(windowSize.width()/2-objectSize.width()/2,
            windowSize.height()/2-objectSize.height()/2);
+
+    radar = new Radar(QSizeF(agentSize.width(),
+                             agentSize.height()), 3);
+
+    // Sets Agent as parent item
+    radar->setParentItem(this);
+    // Centers radar within agent
+    radar->setPos(agentSize.width()/2,agentSize.height()/2);
+
+    // DEMO radar
+    radar->start();
 }
 
 QRectF Agent::boundingRect() const

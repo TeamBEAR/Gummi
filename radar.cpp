@@ -5,7 +5,6 @@ Radar::Radar(QSizeF objectSize,
     Growable(objectSize, factor)
 {
     penWidth=2;
-    setPos(100,100);
 }
 
 float Radar::width(){

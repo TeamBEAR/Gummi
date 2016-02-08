@@ -2,6 +2,7 @@
 #define AGENT_H
 
 #include "movable.h"
+#include "radar.h"
 #include <QSize>
 #include <QRectF>
 #include <QPainter>
@@ -13,6 +14,7 @@ class Agent : public Movable
 {
     private:
         int penWidth;
+        Radar *radar;
     public:
         Agent(QSize windowSize,
               QSize agentSize=QSize(50, 50));
