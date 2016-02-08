@@ -8,20 +8,20 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 SOURCES += \
     main.cpp \
     gamecontrol.cpp \
-    eventhandler.cpp \
     gamescene.cpp \
     gameview.cpp \
     movable.cpp \
     agent.cpp \
     growable.cpp \
-    radar.cpp
+    radar.cpp \
+    commandline.cpp
 
 HEADERS += \
     gamecontrol.h \
-    eventhandler.h \
     gamescene.h \
     gameview.h \
     movable.h \
     agent.h \
     growable.h \
-    radar.h
+    radar.h \
+    commandline.h

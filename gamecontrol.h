@@ -3,14 +3,12 @@
 
 #include "gamescene.h"
 #include "gameview.h"
-#include "eventhandler.h"
 
 class GameControl
 {
     private:
         GameView *view;
         GameScene *scene;
-        EventHandler *handler;
         bool running;
 
     public:
