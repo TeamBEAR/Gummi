@@ -4,9 +4,10 @@
 #include <QPen>
 #include <unistd.h>
 
-Agent::Agent(QSize windowSize, QSize agentSize):
+Agent::Agent(string name, QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
+    this->name = name;
     penWidth=2;
     setPos(windowSize.width()/2-objectSize.width()/2,
            windowSize.height()/2-objectSize.height()/2);

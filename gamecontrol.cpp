@@ -4,25 +4,23 @@
 #include "gamecontrol.h"
 #include "agent.h"
 #include "radar.h"
+#include "level.h"
 
-GameControl::GameControl(){
+GameControl::GameControl():
+    QObject()
+{
 
     // Game is running
     running = true;
+    gameFlow = new Workflow();
 
     QWidget *mainWidget = new QWidget();
     QVBoxLayout *verticalLayout = new QVBoxLayout(mainWidget);
     CommandLine *commandLine = new CommandLine();
-    //commandLine->init();
-
-    // TODO: The state machine framework directs
-    // how scenes are created and populated, depending
-    // on level.
 
     // Creates a new scene
     scene = new GameScene();
     if(scene != NULL){
-
         // TODO: Automatically maximize,
         // read Resize event to calculate final
         // scene size
@@ -36,17 +34,14 @@ GameControl::GameControl(){
             mainWidget->show();
         }
     }
+}
 
-    // Create a demo player
-    // We pass the window's size to know
-    // where its borders are
-    Agent *player = new Agent(QSize(800, 600));
+void GameControl::start(){
+    gameFlow->start();
+}
 
-    // Add demo player to the scene
-    scene->addItem(player);
-
-    player->goUp();
-    player->goRight();
+void GameControl::stop(){
+    gameFlow->stop();
 }
 
 bool GameControl::isRunning(){
@@ -55,4 +50,26 @@ bool GameControl::isRunning(){
 
 void GameControl::setRunning(bool value){
     this->running = value;
+}
+
+void GameControl::addLevel(Level *level){
+    if(gameFlow->active())
+        gameFlow->stop();
+    gameFlow->insertToWorkflow(level);
+    QObject::connect(level,
+                     SIGNAL(entered()),
+                     this,
+                     SLOT(loadLevel())
+                     );
+    gameFlow->start();
+}
+
+void GameControl::loadLevel(){
+    // Loads level information to the scene
+    Level *sender = (Level *)QObject::sender();
+    scene->clear();
+    foreach (Agent *agent, sender->getAgents()) {
+        scene->addItem(agent);
+    }
+    view->show();
 }

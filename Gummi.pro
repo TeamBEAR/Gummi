@@ -14,7 +14,9 @@ SOURCES += \
     agent.cpp \
     growable.cpp \
     radar.cpp \
-    commandline.cpp
+    commandline.cpp \
+    level.cpp \
+    workflow.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -24,4 +26,6 @@ HEADERS += \
     agent.h \
     growable.h \
     radar.h \
-    commandline.h
+    commandline.h \
+    level.h \
+    workflow.h
