@@ -11,6 +11,7 @@ GameControl::GameControl():
 {
     // Game is running
     running = true;
+    currentLevel = NULL;
     gameFlow = new GameFlow();
     commandLine = new CommandLine();
 
@@ -65,21 +66,24 @@ void GameControl::addLevel(Level *level){
 
 void GameControl::loadLevel(){
     // Loads level information to the scene
+
+    unloadLevel();
     Level *sender = (Level *)QObject::sender();
-    scene->clear();
-    display.clear();
     display.setText(QString::fromStdString(
                         sender->getDisplayBuffer())
                     );
     foreach (Agent *agent, sender->getAgents()) {
         scene->addItem(agent);
     }
-    // Connect the display buffer to the display
+    // Connect the level's display buffer to the display
     QObject::connect(sender,
                      SIGNAL(displayContentsChanged()),
                      this,
                      SLOT(refreshDisplay())
                      );
+
+    // Save the sender's pointer for reference
+    currentLevel = sender;
     view->show();
 }
 
@@ -93,6 +97,14 @@ void GameControl::refreshDisplay(){
 }
 
 void GameControl::unloadLevel(){
-    // Loads level information to the scene
-    Level *sender = (Level *)QObject::sender();
+    // Unloads current level
+    scene->clear();
+    display.clear();
+    if(currentLevel!=NULL){
+        QObject::disconnect(currentLevel,
+                            SIGNAL(displayContentsChanged()),
+                            this,
+                            SLOT(refreshDisplay()));
+        currentLevel=NULL;
+    }
 }

@@ -19,6 +19,7 @@ class GameControl : public QObject
         GameFlow *gameFlow;
         CommandLine *commandLine;
         QLabel display;
+        Level *currentLevel;
         bool running;
 
     public:
