@@ -14,6 +14,11 @@ GameControl::GameControl():
     currentLevel = NULL;
     gameFlow = new GameFlow();
     commandLine = new CommandLine();
+    // Connect commandLine to game control
+    QObject::connect(commandLine,
+                     SIGNAL(returnPressed()),
+                     this,
+                     SLOT(processCL()));
 
     QWidget *mainWidget = new QWidget();
     QVBoxLayout *verticalLayout = new QVBoxLayout(mainWidget);
@@ -107,4 +112,11 @@ void GameControl::unloadLevel(){
                             SLOT(refreshDisplay()));
         currentLevel=NULL;
     }
+}
+
+void GameControl::processCL(){
+    // Send it to level, to be interpreted on its internal
+    // states
+    currentLevel->interpret(commandLine->text().toStdString());
+    commandLine->clearCL();
 }

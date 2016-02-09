@@ -8,6 +8,7 @@ Level::Level(string name, string displayBuffer) :
     levelWorkflow = new QStateMachine();
     finalState = new QFinalState();
     levelWorkflow->addState(finalState);
+    currentState = NULL;
 
     // If no other internal state exists, the
     // final state is also the initial state
@@ -48,4 +49,16 @@ Agent *Level::createAgent(string agentName){
 
 void Level::changeLevel(){
     emit solved();
+}
+
+void Level::interpret(string command){
+    if(currentState!=NULL){
+        if(currentState->test(command)){
+            emit changeInternalState();
+        }
+    }
+}
+
+void Level::addInternalState(LevelState *newState){
+
 }

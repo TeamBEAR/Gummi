@@ -34,6 +34,7 @@ class GameControl : public QObject
         void loadLevel();
         void unloadLevel();
         void refreshDisplay();
+        void processCL();
 
 };
 

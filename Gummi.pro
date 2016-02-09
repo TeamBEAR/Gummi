@@ -16,7 +16,8 @@ SOURCES += \
     radar.cpp \
     commandline.cpp \
     level.cpp \
-    gameflow.cpp
+    gameflow.cpp \
+    levelstate.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -28,4 +29,5 @@ HEADERS += \
     radar.h \
     commandline.h \
     level.h \
-    gameflow.h
+    gameflow.h \
+    levelstate.h

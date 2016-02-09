@@ -7,6 +7,7 @@
 #include <iostream>
 #include <QList>
 #include "agent.h"
+#include "levelstate.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class Level : public QState
     private:
         string name;
         string displayBuffer;
+        LevelState *currentState;
         QList<Agent*> agents;
         QFinalState *finalState;
 
@@ -30,6 +32,8 @@ class Level : public QState
         string getName();
         void setDisplayBuffer(string newBufferContents);
         string getDisplayBuffer();
+        void interpret(string command);
+        void addInternalState(LevelState *newState);
 
     signals:
         void changeInternalState();
