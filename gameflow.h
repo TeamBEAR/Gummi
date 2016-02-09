@@ -1,5 +1,5 @@
-#ifndef WORKFLOW_H
-#define WORKFLOW_H
+#ifndef GAMEFLOW_H
+#define GAMEFLOW_H
 
 #include "level.h"
 #include <QObject>
@@ -8,16 +8,23 @@
 #include <QFinalState>
 #include <QSignalTransition>
 
-class Workflow : public QStateMachine
+class GameFlow : public QStateMachine
 {
+    Q_OBJECT
     private:
         QList<Level *> flow;
         QFinalState *finalState;
         QSignalTransition *finalTransition;
 
     public:
-        Workflow();
-        void insertToWorkflow(Level *newState);
+        GameFlow();
+        void insertToGameFlow(Level *newState);
+
+    signals:
+        void gameFinished();
+
+    public slots:
+        void closeGame();
 };
 
-#endif // WORKFLOW_H
+#endif // GAMEFLOW_H

@@ -1,13 +1,13 @@
-#include "workflow.h"
+#include "gameflow.h"
 
-Workflow::Workflow():
+GameFlow::GameFlow():
     QStateMachine()
 {
     finalState = new QFinalState();
     finalTransition = NULL;
 }
 
-void Workflow::insertToWorkflow(Level *newState){
+void GameFlow::insertToGameFlow(Level *newState){
     this->addState(newState);
 
     // Check if it is the first inserted state
@@ -32,4 +32,8 @@ void Workflow::insertToWorkflow(Level *newState){
                                               finalState);
     // Add pointer to the list
     flow.append(newState);
+}
+
+void GameFlow::closeGame(){
+    emit gameFinished();
 }

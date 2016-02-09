@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QStateMachine>
 #include <QLabel>
-#include "workflow.h"
+#include "gameflow.h"
 #include "gamescene.h"
 #include "gameview.h"
 #include "level.h"
@@ -16,7 +16,7 @@ class GameControl : public QObject
     private:
         GameView *view;
         GameScene *scene;
-        Workflow *gameFlow;
+        GameFlow *gameFlow;
         CommandLine *commandLine;
         QLabel display;
         bool running;

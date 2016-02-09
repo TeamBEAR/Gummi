@@ -11,7 +11,7 @@ GameControl::GameControl():
 {
     // Game is running
     running = true;
-    gameFlow = new Workflow();
+    gameFlow = new GameFlow();
     commandLine = new CommandLine();
 
     QWidget *mainWidget = new QWidget();
@@ -54,7 +54,7 @@ void GameControl::setRunning(bool value){
 void GameControl::addLevel(Level *level){
     if(gameFlow->active())
         gameFlow->stop();
-    gameFlow->insertToWorkflow(level);
+    gameFlow->insertToGameFlow(level);
     QObject::connect(level,
                      SIGNAL(entered()),
                      this,

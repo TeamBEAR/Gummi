@@ -2,6 +2,7 @@
 #define LEVEL_H
 
 #include <QObject>
+#include <QFinalState>
 #include <QStateMachine>
 #include <iostream>
 #include <QList>
@@ -16,6 +17,9 @@ class Level : public QState
         string name;
         string displayBuffer;
         QList<Agent*> agents;
+        QFinalState *finalState;
+
+    protected:
         QStateMachine *levelWorkflow;
 
     public:
@@ -28,9 +32,13 @@ class Level : public QState
         string getDisplayBuffer();
 
     signals:
+        void changeInternalState();
         void solved();
         void unsolvable();
         void displayContentsChanged();
+
+    public slots:
+        void changeLevel();
 };
 
 #endif // LEVEL_H
