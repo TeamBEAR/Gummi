@@ -3,10 +3,12 @@
 
 #include <QObject>
 #include <QStateMachine>
+#include <QLabel>
 #include "workflow.h"
 #include "gamescene.h"
 #include "gameview.h"
 #include "level.h"
+#include "commandline.h"
 
 class GameControl : public QObject
 {
@@ -15,6 +17,8 @@ class GameControl : public QObject
         GameView *view;
         GameScene *scene;
         Workflow *gameFlow;
+        CommandLine *commandLine;
+        QLabel display;
         bool running;
 
     public:
@@ -27,6 +31,8 @@ class GameControl : public QObject
 
     public slots:
         void loadLevel();
+        void unloadLevel();
+        void refreshDisplay();
 
 };
 

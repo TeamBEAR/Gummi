@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     // on level.
 
     // Create a demo level
-    Level *level1 = new Level("Level 1");
+    Level *level1 = new Level("Level 1", "Demo instruction");
 
     // Create a demo player in the level
     Agent *player = level1->createAgent("Demo");

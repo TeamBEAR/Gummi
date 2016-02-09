@@ -1,6 +1,6 @@
 #include <QWidget>
 #include <QVBoxLayout>
-#include "commandline.h"
+#include <QString>
 #include "gamecontrol.h"
 #include "agent.h"
 #include "radar.h"
@@ -9,14 +9,13 @@
 GameControl::GameControl():
     QObject()
 {
-
     // Game is running
     running = true;
     gameFlow = new Workflow();
+    commandLine = new CommandLine();
 
     QWidget *mainWidget = new QWidget();
     QVBoxLayout *verticalLayout = new QVBoxLayout(mainWidget);
-    CommandLine *commandLine = new CommandLine();
 
     // Creates a new scene
     scene = new GameScene();
@@ -28,8 +27,8 @@ GameControl::GameControl():
         // Adds the created scene to a view
         view = new GameView(this->scene);
         if(view != NULL){
-            //view->show();
             verticalLayout->addWidget(view);
+            verticalLayout->addWidget(&display);
             verticalLayout->addWidget(commandLine);
             mainWidget->show();
         }
@@ -68,8 +67,32 @@ void GameControl::loadLevel(){
     // Loads level information to the scene
     Level *sender = (Level *)QObject::sender();
     scene->clear();
+    display.clear();
+    display.setText(QString::fromStdString(
+                        sender->getDisplayBuffer())
+                    );
     foreach (Agent *agent, sender->getAgents()) {
         scene->addItem(agent);
     }
+    // Connect the display buffer to the display
+    QObject::connect(sender,
+                     SIGNAL(displayContentsChanged()),
+                     this,
+                     SLOT(refreshDisplay())
+                     );
     view->show();
+}
+
+void GameControl::refreshDisplay(){
+    // Loads level information to the scene
+    Level *sender = (Level *)QObject::sender();
+    display.clear();
+    display.setText(QString::fromStdString(
+                        sender->getDisplayBuffer())
+                    );
+}
+
+void GameControl::unloadLevel(){
+    // Loads level information to the scene
+    Level *sender = (Level *)QObject::sender();
 }
