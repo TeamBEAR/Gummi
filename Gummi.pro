@@ -21,7 +21,9 @@ SOURCES += \
     stringmatchtransition.cpp \
     anystringtransition.cpp \
     comparisonstate.cpp \
-    anyinputstate.cpp
+    anyinputstate.cpp \
+    createagentstate.cpp \
+    createagenttransition.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -39,4 +41,6 @@ HEADERS += \
     anystringtransition.h \
     customevents.h \
     comparisonstate.h \
-    anyinputstate.h
+    anyinputstate.h \
+    createagentstate.h \
+    createagenttransition.h
