@@ -4,10 +4,10 @@
 #include <iostream>
 
 #include "globals.h"
-#include "gamecontrol.h"
-#include "agent.h"
-#include "radar.h"
-#include "level.h"
+#include "Core/gamecontrol.h"
+#include "Entities/agent.h"
+#include "Entities/radar.h"
+#include "Core/level.h"
 
 GameControl::GameControl():
     QObject()

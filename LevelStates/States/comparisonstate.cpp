@@ -1,5 +1,5 @@
-#include "comparisonstate.h"
-#include "stringmatchtransition.h"
+#include "LevelStates/States/comparisonstate.h"
+#include "LevelStates/Transitions/stringmatchtransition.h"
 
 ComparisonState::ComparisonState(QString displayBuffer, QString stringToMatch):
     LevelState(displayBuffer)

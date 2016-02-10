@@ -1,6 +1,6 @@
-#include "createagenttransition.h"
-#include "customevents.h"
-#include "levelstate.h"
+#include "LevelStates/Transitions/createagenttransition.h"
+#include "LevelStates/customevents.h"
+#include "LevelStates/States/levelstate.h"
 #include "globals.h"
 #include <iostream>
 

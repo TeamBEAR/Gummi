@@ -3,13 +3,13 @@
 #include <iostream>
 
 #include "globals.h"
-#include "gamecontrol.h"
-#include "level.h"
-#include "levelstate.h"
+#include "Core/gamecontrol.h"
+#include "Core/level.h"
 
-#include "comparisonstate.h"
-#include "anyinputstate.h"
-#include "createagentstate.h"
+#include "LevelStates/States/levelstate.h"
+#include "LevelStates/States/comparisonstate.h"
+#include "LevelStates/States/anyinputstate.h"
+#include "LevelStates/States/createagentstate.h"
 
 Level *createLevelOne(){
     //AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");

@@ -6,9 +6,11 @@
 #include <QStateMachine>
 #include <QList>
 
-#include "agent.h"
-#include "levelstate.h"
-#include "virtualmemory.h"
+#include "Entities/agent.h"
+
+#include "LevelStates/States/levelstate.h"
+
+#include "Core/virtualmemory.h"
 
 class Level : public QState
 {

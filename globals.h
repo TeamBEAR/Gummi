@@ -1,7 +1,7 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include "virtualmemory.h"
+#include "Core/virtualmemory.h"
 
 extern VirtualMemory *gameMemory;
 

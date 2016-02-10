@@ -5,7 +5,7 @@
 #include <QList>
 #include <QString>
 
-#include "agent.h"
+#include "Entities/agent.h"
 
 class VirtualMemory : public QObject
 {

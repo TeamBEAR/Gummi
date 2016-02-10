@@ -1,5 +1,5 @@
-#include "createagentstate.h"
-#include "createagenttransition.h"
+#include "LevelStates/States/createagentstate.h"
+#include "LevelStates/Transitions/createagenttransition.h"
 
 CreateAgentState::CreateAgentState(QString displayBuffer):
     LevelState(displayBuffer)

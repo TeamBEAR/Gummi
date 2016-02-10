@@ -1,5 +1,5 @@
-#include "level.h"
-#include "customevents.h"
+#include "Core/level.h"
+#include "LevelStates/customevents.h"
 
 Level::Level(QString name, QList<LevelState *> internalStates) :
     QState()

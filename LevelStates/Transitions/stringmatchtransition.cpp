@@ -1,5 +1,5 @@
-#include "stringmatchtransition.h"
-#include "customevents.h"
+#include "LevelStates/Transitions/stringmatchtransition.h"
+#include "LevelStates/customevents.h"
 #include <iostream>
 
 StringMatchTransition::StringMatchTransition(const QString &value):
