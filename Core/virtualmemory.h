@@ -21,8 +21,10 @@ class VirtualMemory : public QObject
 
     signals:
         void addedAgent();
+        void clearedMemory();
 
     public slots:
+        void clear();
 };
 
 #endif // VIRTUALMEMORY_H

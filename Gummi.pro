@@ -25,7 +25,9 @@ SOURCES += \
     LevelStates/States/createagentstate.cpp \
     LevelStates/Transitions/stringmatchtransition.cpp \
     LevelStates/Transitions/anystringtransition.cpp \
-    LevelStates/Transitions/createagenttransition.cpp
+    LevelStates/Transitions/createagenttransition.cpp \
+    LevelStates/States/cleanmemorystate.cpp \
+    LevelStates/Transitions/cleanmemorytransition.cpp
 
 
 HEADERS += \
@@ -48,4 +50,6 @@ HEADERS += \
     LevelStates/States/createagentstate.h \
     LevelStates/Transitions/stringmatchtransition.h \
     LevelStates/Transitions/anystringtransition.h \
-    LevelStates/Transitions/createagenttransition.h
+    LevelStates/Transitions/createagenttransition.h \
+    LevelStates/States/cleanmemorystate.h \
+    LevelStates/Transitions/cleanmemorytransition.h

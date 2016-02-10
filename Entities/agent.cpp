@@ -4,6 +4,9 @@
 #include <QPen>
 #include <unistd.h>
 
+#include <iostream>
+using namespace std;
+
 Agent::Agent(QString name, QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
@@ -54,4 +57,9 @@ QString Agent::getName(){
     return name;
 }
 
-
+Agent::~Agent(){
+    animation->stop();
+    radar->stop();
+    delete animation;
+    delete radar;
+}

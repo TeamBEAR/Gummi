@@ -21,6 +21,7 @@ class Agent : public Movable
         Agent(QString name,
               QSize windowSize,
               QSize agentSize=QSize(50, 50));
+        ~Agent();
         void paint(QPainter *painter,
                    const QStyleOptionGraphicsItem *option,
                    QWidget *widget);

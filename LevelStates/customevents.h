@@ -13,4 +13,11 @@ struct StringEvent : public QEvent
     QString value;
 };
 
+struct CleanMemoryEvent : public QEvent
+{
+    CleanMemoryEvent()
+    : QEvent(QEvent::Type(QEvent::User+2)){}
+};
+
+
 #endif // CUSTOMEVENTS_H

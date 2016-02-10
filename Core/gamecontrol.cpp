@@ -36,8 +36,16 @@ GameControl::GameControl():
 
         // Connect scene to memory
         // TODO: Generic connection
+
+        // If agent is added, refresh
         QObject::connect(gameMemory,
                          SIGNAL(addedAgent()),
+                         this,
+                         SLOT(refresh()));
+
+        // If memory is cleared, refresh
+        QObject::connect(gameMemory,
+                         SIGNAL(clearedMemory()),
                          this,
                          SLOT(refresh()));
 
@@ -127,7 +135,7 @@ void GameControl::processCL(){
 }
 
 void GameControl::refresh(){
-    //scene->clear();
+    //scene->clear(); //THIS METHOD DELETES
     foreach (Agent *agent, gameMemory->getAgents()) {
         scene->addItem(agent);
     }

@@ -10,15 +10,21 @@
 #include "LevelStates/States/comparisonstate.h"
 #include "LevelStates/States/anyinputstate.h"
 #include "LevelStates/States/createagentstate.h"
+#include "LevelStates/States/cleanmemorystate.h"
 
 Level *createLevelOne(){
     //AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");
-    CreateAgentState *initial = new CreateAgentState("Quel est ton nom, petit d'homme ?");
-    ComparisonState *second = new ComparisonState("tu peux <font color=\"green\">accelerer</font>",
+    ComparisonState *initial = new ComparisonState("Tapes <font color=\"red\">commencer</font>",
+                                                  "commencer");
+    CleanMemoryState *first = new CleanMemoryState();
+    CreateAgentState *second = new CreateAgentState("Quel est ton nom, petit d'homme ?");
+    ComparisonState *third = new ComparisonState("tu peux <font color=\"green\">accelerer</font>",
                                                   "accelerer");
     QList<LevelState *> params;
     params.append(initial);
+    params.append(first);
     params.append(second);
+    params.append(third);
     return new Level("one", params);
 }
 

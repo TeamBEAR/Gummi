@@ -22,3 +22,11 @@ void VirtualMemory::createAgent(QString agentName){
     newAgent(agentName);
     emit addedAgent();
 }
+
+void VirtualMemory::clear(){
+    foreach(Agent *agent, agents){
+        delete agent;
+    }
+    agents.clear();
+    emit clearedMemory();
+}

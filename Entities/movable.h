@@ -18,8 +18,8 @@ class Movable : public QObject, public QGraphicsItem
         bool goingLeft;
         bool goingRight;
         float speed;
-        QPropertyAnimation *animation;
     protected:
+        QPropertyAnimation *animation;
         QSize windowSize;
         QSize objectSize;
     public:
