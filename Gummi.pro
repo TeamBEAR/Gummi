@@ -17,7 +17,9 @@ SOURCES += \
     commandline.cpp \
     level.cpp \
     gameflow.cpp \
-    levelstate.cpp
+    levelstate.cpp \
+    stringmatchtransition.cpp \
+    anystringtransition.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -30,4 +32,6 @@ HEADERS += \
     commandline.h \
     level.h \
     gameflow.h \
-    levelstate.h
+    levelstate.h \
+    stringmatchtransition.h \
+    anystringtransition.h

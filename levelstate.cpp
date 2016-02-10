@@ -3,9 +3,14 @@
 LevelState::LevelState():
     QState()
 {
+    QObject::connect(this,
+                     SIGNAL(succeded()),
+                     this,
+                     SLOT(changeState())
+                     );
 
 }
 
-bool LevelState::test(string textInput){
-    return true;
+void LevelState::changeState(){
+
 }

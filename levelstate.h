@@ -9,9 +9,17 @@ using namespace std;
 
 class LevelState : public QState
 {
+    Q_OBJECT
     public:
         LevelState();
-        bool test(string textInput);
+        virtual bool test(string testInput){return false;}
+
+    signals:
+        void succeded();
+        void failed();
+
+    public slots:
+        void changeState();
 };
 
 #endif // LEVELSTATE_H
