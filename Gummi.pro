@@ -7,44 +7,45 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
     main.cpp \
-    gamecontrol.cpp \
-    gamescene.cpp \
-    gameview.cpp \
-    movable.cpp \
-    agent.cpp \
-    growable.cpp \
-    radar.cpp \
-    commandline.cpp \
-    level.cpp \
-    gameflow.cpp \
-    levelstate.cpp \
-    stringmatchtransition.cpp \
-    anystringtransition.cpp \
-    comparisonstate.cpp \
-    anyinputstate.cpp \
-    createagentstate.cpp \
-    createagenttransition.cpp \
-    virtualmemory.cpp \
-    globals.cpp
+    globals.cpp \
+    Core/gamecontrol.cpp \
+    Core/gamescene.cpp \
+    Core/gameview.cpp \
+    Core/commandline.cpp \
+    Core/level.cpp \
+    Core/gameflow.cpp \
+    Core/virtualmemory.cpp \
+    Entities/movable.cpp \
+    Entities/agent.cpp \
+    Entities/growable.cpp \
+    Entities/radar.cpp \
+    LevelStates/States/levelstate.cpp \
+    LevelStates/States/comparisonstate.cpp \
+    LevelStates/States/anyinputstate.cpp \
+    LevelStates/States/createagentstate.cpp \
+    LevelStates/Transitions/stringmatchtransition.cpp \
+    LevelStates/Transitions/anystringtransition.cpp \
+    LevelStates/Transitions/createagenttransition.cpp
+
 
 HEADERS += \
-    gamecontrol.h \
-    gamescene.h \
-    gameview.h \
-    movable.h \
-    agent.h \
-    growable.h \
-    radar.h \
-    commandline.h \
-    level.h \
-    gameflow.h \
-    levelstate.h \
-    stringmatchtransition.h \
-    anystringtransition.h \
-    customevents.h \
-    comparisonstate.h \
-    anyinputstate.h \
-    createagentstate.h \
-    createagenttransition.h \
-    virtualmemory.h \
-    globals.h
+    globals.h \
+    Core/gamecontrol.h \
+    Core/gamescene.h \
+    Core/gameview.h \
+    Core/commandline.h \
+    Core/level.h \
+    Core/gameflow.h \
+    Core/virtualmemory.h \
+    Entities/movable.h \
+    Entities/agent.h \
+    Entities/growable.h \
+    Entities/radar.h \
+    LevelStates/customevents.h \
+    LevelStates/States/levelstate.h \
+    LevelStates/States/comparisonstate.h \
+    LevelStates/States/anyinputstate.h \
+    LevelStates/States/createagentstate.h \
+    LevelStates/Transitions/stringmatchtransition.h \
+    LevelStates/Transitions/anystringtransition.h \
+    LevelStates/Transitions/createagenttransition.h
