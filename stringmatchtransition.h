@@ -1,6 +1,7 @@
 #ifndef STRINGMATCHTRANSITION_H
 #define STRINGMATCHTRANSITION_H
 
+#include <QEvent>
 #include <QAbstractTransition>
 
 struct StringMatchEvent : public QEvent
@@ -20,8 +21,8 @@ class StringMatchTransition : public QAbstractTransition
         StringMatchTransition(const QString &value):
             m_value(value){}
     protected:
-        virtual bool eventTest(QEvent *event) const;
-        virtual void onTransition(QEvent *event){}
+        virtual bool eventTest(QEvent *e) const;
+        virtual void onTransition(QEvent *e){}
 };
 
 #endif // STRINGMATCHTRANSITION_H
