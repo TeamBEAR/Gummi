@@ -74,9 +74,7 @@ void GameControl::loadLevel(){
 
     unloadLevel();
     Level *sender = (Level *)QObject::sender();
-    display.setText(QString::fromStdString(
-                        sender->getDisplayBuffer())
-                    );
+    display.setText(sender->getDisplayBuffer());
     foreach (Agent *agent, sender->getAgents()) {
         scene->addItem(agent);
     }
@@ -96,9 +94,7 @@ void GameControl::refreshDisplay(){
     // Loads level information to the scene
     Level *sender = (Level *)QObject::sender();
     display.clear();
-    display.setText(QString::fromStdString(
-                        sender->getDisplayBuffer())
-                    );
+    display.setText(sender->getDisplayBuffer());
 }
 
 void GameControl::unloadLevel(){
@@ -117,6 +113,6 @@ void GameControl::unloadLevel(){
 void GameControl::processCL(){
     // Send it to level, to be interpreted on its internal
     // states
-    currentLevel->interpret(commandLine->text().toStdString());
+    currentLevel->interpret(commandLine->text());
     commandLine->clearCL();
 }

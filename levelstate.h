@@ -3,16 +3,23 @@
 
 #include <QObject>
 #include <QState>
-#include <iostream>
-
-using namespace std;
+#include <QString>
+#include <QAbstractTransition>
+#include <QAbstractState>
 
 class LevelState : public QState
 {
     Q_OBJECT
+    private:
+        QString displayBuffer;
+    protected:
+        QAbstractTransition *guardedTransition;
     public:
-        LevelState();
-        virtual bool test(string testInput){return false;}
+        LevelState(QString displayBuffer);
+        QString getDisplayBuffer();
+        void setDisplayBuffer(QString newDisplayBuffer);
+        void connectTo(QAbstractState *nextState);
+        virtual bool test(QString testInput){return false;}
 
     signals:
         void succeded();

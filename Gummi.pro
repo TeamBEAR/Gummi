@@ -19,7 +19,9 @@ SOURCES += \
     gameflow.cpp \
     levelstate.cpp \
     stringmatchtransition.cpp \
-    anystringtransition.cpp
+    anystringtransition.cpp \
+    comparisonstate.cpp \
+    anyinputstate.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -35,4 +37,6 @@ HEADERS += \
     levelstate.h \
     stringmatchtransition.h \
     anystringtransition.h \
-    customevents.h
+    customevents.h \
+    comparisonstate.h \
+    anyinputstate.h

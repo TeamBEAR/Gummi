@@ -4,6 +4,19 @@
 
 #include "gamecontrol.h"
 #include "level.h"
+#include "levelstate.h"
+#include "comparisonstate.h"
+#include "anyinputstate.h"
+
+Level *createLevelOne(){
+    AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");
+    ComparisonState *second = new ComparisonState("tu peux <font color=\"green\">accelerer</font>",
+                                                  "accelerer");
+    QList<LevelState *> params;
+    params.append(initial);
+    params.append(second);
+    return new Level("one", params);
+}
 
 int main(int argc, char **argv)
 {
@@ -14,7 +27,7 @@ int main(int argc, char **argv)
     // on level.
 
     // Create a demo level
-    Level *level1 = new Level("Level 1", "Demo instruction");
+    Level *level1 = createLevelOne();
 
     // Create a demo player in the level
     Agent *player = level1->createAgent("Demo");

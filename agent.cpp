@@ -4,7 +4,7 @@
 #include <QPen>
 #include <unistd.h>
 
-Agent::Agent(string name, QSize windowSize, QSize agentSize):
+Agent::Agent(QString name, QSize windowSize, QSize agentSize):
     Movable(windowSize, agentSize)
 {
     this->name = name;

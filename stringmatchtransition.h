@@ -3,17 +3,17 @@
 
 #include <QEvent>
 #include <QAbstractTransition>
+#include "customevents.h"
 
 class StringMatchTransition : public QAbstractTransition
 {
     private:
         QString m_value;
     public:
-        StringMatchTransition(const QString &value):
-            m_value(value){}
+        StringMatchTransition(const QString &value);
     protected:
-        virtual bool eventTest(QEvent *e) const;
-        virtual void onTransition(QEvent *e){}
+        virtual bool eventTest(QEvent *e);
+        virtual void onTransition(QEvent *e);
 };
 
 #endif // STRINGMATCHTRANSITION_H

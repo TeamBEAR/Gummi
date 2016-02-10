@@ -7,11 +7,11 @@
 class AnyStringTransition : public QAbstractTransition
 {
     public:
-        AnyStringTransition(const QString &value){}
+        AnyStringTransition(){}
 
     protected:
-        virtual bool eventTest(QEvent *e) const;
-        virtual void onTransition(QEvent *e){}
+        virtual bool eventTest(QEvent *e);
+        virtual void onTransition(QEvent *e);
 };
 
 #endif // ANYSTRINGTRANSITION_H

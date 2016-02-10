@@ -1,6 +1,9 @@
 #ifndef CUSTOMEVENTS_H
 #define CUSTOMEVENTS_H
 
+#include <QEvent>
+#include <QString>
+
 struct StringEvent : public QEvent
 {
     StringEvent(const QString &val)

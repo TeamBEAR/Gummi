@@ -4,20 +4,15 @@
 #include <QObject>
 #include <QFinalState>
 #include <QStateMachine>
-#include <iostream>
 #include <QList>
 #include "agent.h"
 #include "levelstate.h"
-
-using namespace std;
 
 class Level : public QState
 {
     Q_OBJECT
     private:
-        string name;
-        string displayBuffer;
-        LevelState *currentState;
+        QString name;
         QList<Agent*> agents;
         QFinalState *finalState;
 
@@ -25,24 +20,24 @@ class Level : public QState
         QStateMachine *levelWorkflow;
 
     public:
-        Level(string name,
-              string displayBuffer="");
-        Agent *createAgent(string name);
+        Level(QString name,
+              QList<LevelState *> internalStates);
+        LevelState *currentState();
+        Agent *createAgent(QString name);
         QList<Agent*> getAgents();
-        string getName();
-        void setDisplayBuffer(string newBufferContents);
-        string getDisplayBuffer();
-        void interpret(string command);
-        void addInternalState(LevelState *newState);
+        QString getName();
+        void setDisplayBuffer(QString newBufferContents);
+        QString getDisplayBuffer();
+        void interpret(QString command);
 
     signals:
-        void changeInternalState();
         void solved();
         void unsolvable();
         void displayContentsChanged();
 
     public slots:
         void changeLevel();
+        void changeInternalState();
 };
 
 #endif // LEVEL_H
