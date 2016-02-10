@@ -23,7 +23,9 @@ SOURCES += \
     comparisonstate.cpp \
     anyinputstate.cpp \
     createagentstate.cpp \
-    createagenttransition.cpp
+    createagenttransition.cpp \
+    virtualmemory.cpp \
+    globals.cpp
 
 HEADERS += \
     gamecontrol.h \
@@ -43,4 +45,6 @@ HEADERS += \
     comparisonstate.h \
     anyinputstate.h \
     createagentstate.h \
-    createagenttransition.h
+    createagenttransition.h \
+    virtualmemory.h \
+    globals.h

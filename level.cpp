@@ -1,6 +1,5 @@
 #include "level.h"
 #include "customevents.h"
-#include <iostream>
 
 Level::Level(QString name, QList<LevelState *> internalStates) :
     QState()
@@ -44,10 +43,6 @@ Level::Level(QString name, QList<LevelState *> internalStates) :
     levelWorkflow->start();
 }
 
-QList<Agent*> Level::getAgents(){
-    return agents;
-}
-
 QString Level::getName(){
     return name;
 }
@@ -72,13 +67,6 @@ void Level::setDisplayBuffer(QString newBufferContents){
         currentState()->setDisplayBuffer(newBufferContents);
         emit displayContentsChanged();
     }
-}
-
-Agent *Level::createAgent(QString agentName){
-    // TODO: Get size dynamically
-    Agent *newAgent = new Agent(agentName, QSize(800, 600));
-    agents.append(newAgent);
-    return newAgent;
 }
 
 void Level::changeInternalState(){

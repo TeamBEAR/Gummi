@@ -1,5 +1,7 @@
 #include "createagenttransition.h"
+#include "customevents.h"
 #include "levelstate.h"
+#include "globals.h"
 #include <iostream>
 
 bool CreateAgentTransition::eventTest(QEvent *e){
@@ -10,5 +12,6 @@ bool CreateAgentTransition::eventTest(QEvent *e){
 
 void CreateAgentTransition::onTransition(QEvent *e){
     std::cout<<"executed createagent"<<std::endl;
-    //TODO:Create agent to memory
+    StringEvent *sm_event = static_cast<StringEvent*>(e);
+    gameMemory->createAgent(sm_event->value);
 }

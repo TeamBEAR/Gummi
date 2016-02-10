@@ -1,6 +1,9 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QString>
+#include <iostream>
+
+#include "globals.h"
 #include "gamecontrol.h"
 #include "agent.h"
 #include "radar.h"
@@ -30,6 +33,14 @@ GameControl::GameControl():
         // read Resize event to calculate final
         // scene size
         scene->setSceneRect(QRectF(0, 0, 800, 600));
+
+        // Connect scene to memory
+        // TODO: Generic connection
+        QObject::connect(gameMemory,
+                         SIGNAL(addedAgent()),
+                         this,
+                         SLOT(refresh()));
+
         // Adds the created scene to a view
         view = new GameView(this->scene);
         if(view != NULL){
@@ -75,9 +86,7 @@ void GameControl::loadLevel(){
     unloadLevel();
     Level *sender = (Level *)QObject::sender();
     display.setText(sender->getDisplayBuffer());
-    foreach (Agent *agent, sender->getAgents()) {
-        scene->addItem(agent);
-    }
+    refresh();
     // Connect the level's display buffer to the display
     QObject::connect(sender,
                      SIGNAL(displayContentsChanged()),
@@ -115,4 +124,12 @@ void GameControl::processCL(){
     // states
     currentLevel->interpret(commandLine->text());
     commandLine->clearCL();
+}
+
+void GameControl::refresh(){
+    //scene->clear();
+    foreach (Agent *agent, gameMemory->getAgents()) {
+        scene->addItem(agent);
+    }
+    view->viewport()->update();
 }

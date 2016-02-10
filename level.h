@@ -5,15 +5,16 @@
 #include <QFinalState>
 #include <QStateMachine>
 #include <QList>
+
 #include "agent.h"
 #include "levelstate.h"
+#include "virtualmemory.h"
 
 class Level : public QState
 {
     Q_OBJECT
     private:
         QString name;
-        QList<Agent*> agents;
         QFinalState *finalState;
 
     protected:
@@ -23,8 +24,6 @@ class Level : public QState
         Level(QString name,
               QList<LevelState *> internalStates);
         LevelState *currentState();
-        Agent *createAgent(QString name);
-        QList<Agent*> getAgents();
         QString getName();
         void setDisplayBuffer(QString newBufferContents);
         QString getDisplayBuffer();

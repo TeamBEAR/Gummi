@@ -2,14 +2,18 @@
 #include <unistd.h>
 #include <iostream>
 
+#include "globals.h"
 #include "gamecontrol.h"
 #include "level.h"
 #include "levelstate.h"
+
 #include "comparisonstate.h"
 #include "anyinputstate.h"
+#include "createagentstate.h"
 
 Level *createLevelOne(){
-    AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");
+    //AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");
+    CreateAgentState *initial = new CreateAgentState("Quel est ton nom, petit d'homme ?");
     ComparisonState *second = new ComparisonState("tu peux <font color=\"green\">accelerer</font>",
                                                   "accelerer");
     QList<LevelState *> params;
@@ -30,7 +34,7 @@ int main(int argc, char **argv)
     Level *level1 = createLevelOne();
 
     // Create a demo player in the level
-    Agent *player = level1->createAgent("Demo");
+    Agent *player = gameMemory->newAgent("Demo");
 
     // Make the player move
     player->goUp();

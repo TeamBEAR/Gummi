@@ -25,6 +25,7 @@ class Agent : public Movable
                    const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
         QRectF boundingRect() const;
+        QString getName();
 };
 
 #endif // AGENT_H

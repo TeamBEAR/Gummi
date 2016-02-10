@@ -50,4 +50,8 @@ void Agent::paint(QPainter *painter,
     painter->drawRect(boundingRect());
 }
 
+QString Agent::getName(){
+    return name;
+}
+
 
