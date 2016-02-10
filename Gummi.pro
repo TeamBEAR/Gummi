@@ -34,4 +34,5 @@ HEADERS += \
     gameflow.h \
     levelstate.h \
     stringmatchtransition.h \
-    anystringtransition.h
+    anystringtransition.h \
+    customevents.h

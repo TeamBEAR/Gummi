@@ -4,15 +4,6 @@
 #include <QEvent>
 #include <QAbstractTransition>
 
-struct AnyStringEvent : public QEvent
-{
-    AnyStringEvent(const QString &val)
-    : QEvent(QEvent::Type(QEvent::User+2)),
-      value(val) {}
-
-    QString value;
-};
-
 class AnyStringTransition : public QAbstractTransition
 {
     public:
