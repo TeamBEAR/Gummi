@@ -27,7 +27,9 @@ SOURCES += \
     LevelStates/Transitions/anystringtransition.cpp \
     LevelStates/Transitions/createagenttransition.cpp \
     LevelStates/States/cleanmemorystate.cpp \
-    LevelStates/Transitions/cleanmemorytransition.cpp
+    LevelStates/Transitions/cleanmemorytransition.cpp \
+    Core/Parser/ast.cpp \
+    Core/interpreter.cpp
 
 
 HEADERS += \
@@ -52,4 +54,11 @@ HEADERS += \
     LevelStates/Transitions/anystringtransition.h \
     LevelStates/Transitions/createagenttransition.h \
     LevelStates/States/cleanmemorystate.h \
-    LevelStates/Transitions/cleanmemorytransition.h
+    LevelStates/Transitions/cleanmemorytransition.h \
+    Core/Parser/lexicaltokens.l \
+    Core/Parser/ast.h \
+    Core/interpreter.h
+
+DISTFILES += \
+    Core/Parser/grammar.y \
+    Core/Parser/Makefile
