@@ -1,5 +1,4 @@
 #include "Core/level.h"
-#include "LevelStates/customevents.h"
 
 Level::Level(QString name, QList<LevelState *> internalStates) :
     QState()
@@ -77,11 +76,6 @@ void Level::changeLevel(){
     emit solved();
 }
 
-void Level::interpret(QString command){
-    if(currentState()!=NULL){
-        levelWorkflow->postEvent(new StringEvent(command));
-        if(currentState()->test(command)){
-
-        }
-    }
+void Level::postEvent(QEvent *e){
+    levelWorkflow->postEvent(e);
 }

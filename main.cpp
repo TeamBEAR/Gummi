@@ -13,18 +13,27 @@
 #include "LevelStates/States/cleanmemorystate.h"
 
 Level *createLevelOne(){
-    //AnyInputState *initial = new AnyInputState("Quel est ton nom, petit d'homme ?");
-    ComparisonState *initial = new ComparisonState("Tapes <font color=\"red\">commencer</font>",
+    ComparisonState *initial = new ComparisonState("Tapes <font color=\"blue\">commencer</font>",
                                                   "commencer");
     CleanMemoryState *first = new CleanMemoryState();
     CreateAgentState *second = new CreateAgentState("Quel est ton nom, petit d'homme ?");
     ComparisonState *third = new ComparisonState("tu peux <font color=\"green\">accelerer</font>",
                                                   "accelerer");
+    ComparisonState *fourth = new ComparisonState("tu peux <font color=\"blue\">allumer radar</font>",
+                                                  "allumer radar");
+    ComparisonState *fifth = new ComparisonState("tu peux <font color=\"red\">arreter</font>",
+                                                  "arreter");
+    ComparisonState *sixth = new ComparisonState(
+                "Tapes <font color=\"green\">accelerer</font> et <font color=\"blue\">continuer</font>",
+                "accelerer et continuer");
     QList<LevelState *> params;
     params.append(initial);
     params.append(first);
     params.append(second);
     params.append(third);
+    params.append(fourth);
+    params.append(fifth);
+    params.append(sixth);
     return new Level("one", params);
 }
 
@@ -39,14 +48,17 @@ int main(int argc, char **argv)
     // Create a demo level
     Level *level1 = createLevelOne();
 
-    // Create a demo player in the level
+    // Create a demo player in memory
     Agent *player = gameMemory->newAgent("Demo");
 
     // Make the player move
     player->goUp();
     player->goRight();
 
-    // Add demo level to the scene
+    // Demo player's radar
+    player->toggleRadar();
+
+    // Add first level to the scene
     handler->addLevel(level1);
 
     /*// Manual game loop

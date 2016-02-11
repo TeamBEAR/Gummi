@@ -13,6 +13,7 @@ class Movable : public QObject, public QGraphicsItem
     Q_PROPERTY(QPointF pos READ pos WRITE setPos)
     private:
         bool looping;
+        bool started;
         bool goingUp;
         bool goingDown;
         bool goingLeft;
@@ -26,6 +27,7 @@ class Movable : public QObject, public QGraphicsItem
         explicit Movable(QSize windowSize,
                          QSize objectSize);
         bool isLooping();
+        bool hasStarted();
         void goUp();
         void goDown();
         void goLeft();

@@ -4,10 +4,14 @@
 #include <iostream>
 
 #include "globals.h"
+
 #include "Core/gamecontrol.h"
+#include "Core/level.h"
+
 #include "Entities/agent.h"
 #include "Entities/radar.h"
-#include "Core/level.h"
+
+#include "LevelStates/customevents.h"
 
 GameControl::GameControl():
     QObject()
@@ -17,6 +21,7 @@ GameControl::GameControl():
     currentLevel = NULL;
     gameFlow = new GameFlow();
     commandLine = new CommandLine();
+
     // Connect commandLine to game control
     QObject::connect(commandLine,
                      SIGNAL(returnPressed()),
@@ -128,14 +133,23 @@ void GameControl::unloadLevel(){
 }
 
 void GameControl::processCL(){
-    // Send it to level, to be interpreted on its internal
-    // states
-    currentLevel->interpret(commandLine->text());
+    //Tell the level that a string was received
+    currentLevel->postEvent(new StringEvent(commandLine->text()));
+    //TODO: Send it to interpreter
+    if(commandLine->text() == "accelerer"){
+        gameMemory->getAgents().first()->goRight();
+    }else if(commandLine->text() == "arreter"){
+        gameMemory->getAgents().first()->stop();
+    }else if(commandLine->text() == "allumer radar"){
+        gameMemory->getAgents().first()->toggleRadar();
+    }else if(commandLine->text() == "accelerer et continuer"){
+        gameMemory->getAgents().first()->goRight();
+    }
     commandLine->clearCL();
 }
 
 void GameControl::refresh(){
-    //scene->clear(); //THIS METHOD DELETES
+    //scene->clear(); //<--THIS METHOD DELETES
     foreach (Agent *agent, gameMemory->getAgents()) {
         scene->addItem(agent);
     }

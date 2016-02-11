@@ -27,6 +27,7 @@ class Agent : public Movable
                    QWidget *widget);
         QRectF boundingRect() const;
         QString getName();
+        void toggleRadar();
 };
 
 #endif // AGENT_H

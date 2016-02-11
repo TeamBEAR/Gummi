@@ -23,8 +23,6 @@ Agent::Agent(QString name, QSize windowSize, QSize agentSize):
     // Centers radar within agent
     radar->setPos(agentSize.width()/2,agentSize.height()/2);
 
-    // DEMO radar
-    radar->start();
 }
 
 QRectF Agent::boundingRect() const
@@ -55,6 +53,16 @@ void Agent::paint(QPainter *painter,
 
 QString Agent::getName(){
     return name;
+}
+
+void Agent::toggleRadar(){
+    if(radar->hasStarted()){
+        radar->stop();
+        radar->hide();
+    }else{
+        radar->start();
+        radar->show();
+    }
 }
 
 Agent::~Agent(){

@@ -16,6 +16,7 @@ class Growable : public QObject, public QGraphicsItem
         QSizeF objectSize;
         int factor;
         bool looping;
+        bool started;
         int penWidth;
         QParallelAnimationGroup *animation;
         QPropertyAnimation *widthAnimation;
@@ -23,7 +24,9 @@ class Growable : public QObject, public QGraphicsItem
     public:
         explicit Growable(QSizeF objectSize,
                           int factor);
+        void setDuration(int mseconds);
         bool isLooping();
+        bool hasStarted();
         void toggleLooping();
         void start();
         void stop();

@@ -29,7 +29,7 @@ class Level : public QState
         QString getName();
         void setDisplayBuffer(QString newBufferContents);
         QString getDisplayBuffer();
-        void interpret(QString command);
+        void postEvent(QEvent *e);
 
     signals:
         void solved();

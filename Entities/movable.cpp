@@ -6,6 +6,7 @@ Movable::Movable(QSize windowSize,
     QObject(), QGraphicsItem()
 {
     looping = true;
+    started = false;
     speed = 10;
 
     // Create animation container
@@ -35,16 +36,22 @@ void Movable::toggleLooping(){
     isLooping() ? looping = false : looping = true;
 }
 
+bool Movable::hasStarted(){
+    return started;
+}
+
 void Movable::stop(){
     goingUp = false;
     goingDown = false;
     goingLeft = false;
     goingRight = false;
+    started = false;
     animation->stop();
 }
 
 void Movable::start(){
     if(animation->state() != QAbstractAnimation::Running){
+        started = true;
         refreshPos();
     }
 }

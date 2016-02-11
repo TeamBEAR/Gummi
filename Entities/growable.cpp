@@ -5,17 +5,19 @@ Growable::Growable(QSizeF objectSize,
     QObject(), QGraphicsItem()
 {
     looping = true;
+    started = false;
+
     // Create animation container
     animation = new QParallelAnimationGroup();
 
     widthAnimation = new QPropertyAnimation(this, "width");
     // 2 seconds
-    widthAnimation->setDuration(2000);
+    widthAnimation->setDuration(1000);
     animation->addAnimation(widthAnimation);
 
     heightAnimation = new QPropertyAnimation(this, "height");
     // 2 seconds
-    heightAnimation->setDuration(2000);
+    heightAnimation->setDuration(1000);
     animation->addAnimation(heightAnimation);
 
     animation->setLoopCount(-1);
@@ -27,8 +29,18 @@ Growable::Growable(QSizeF objectSize,
     this->factor = factor;
 }
 
+void Growable::setDuration(int mseconds){
+    widthAnimation->setDuration(mseconds);
+    heightAnimation->setDuration(mseconds);
+}
+
+bool Growable::hasStarted(){
+    return started;
+}
+
 void Growable::stop(){
     animation->stop();
+    started = false;
 }
 
 void Growable::start(){
@@ -37,6 +49,7 @@ void Growable::start(){
         widthAnimation->setEndValue(width() * factor);
         heightAnimation->setStartValue(height());
         heightAnimation->setEndValue(height() * factor);
+        started = true;
         animation->start();
     }
 }
