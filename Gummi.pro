@@ -28,8 +28,8 @@ SOURCES += \
     LevelStates/Transitions/createagenttransition.cpp \
     LevelStates/States/cleanmemorystate.cpp \
     LevelStates/Transitions/cleanmemorytransition.cpp \
-    Core/Parser/ast.cpp \
-    Core/interpreter.cpp
+    Core/interpreter.cpp \
+    Entities/sprite.cpp
 
 
 HEADERS += \
@@ -55,10 +55,16 @@ HEADERS += \
     LevelStates/Transitions/createagenttransition.h \
     LevelStates/States/cleanmemorystate.h \
     LevelStates/Transitions/cleanmemorytransition.h \
-    Core/Parser/lexicaltokens.l \
-    Core/Parser/ast.h \
-    Core/interpreter.h
+    Core/interpreter.h \
+    Entities/sprite.h
 
 DISTFILES += \
+    Core/Parser/lexicaltokens.l \
     Core/Parser/grammar.y \
     Core/Parser/Makefile
+
+copyres.commands = $(COPY_DIR) $$PWD/Res $$OUT_PWD
+first.depends = $(first) copyres
+export(first.depends)
+export(copyres.commands)
+QMAKE_EXTRA_TARGETS += first copyres

@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "globals.h"
+#include "Entities/sprite.h"
 #include "Core/gamecontrol.h"
 #include "Core/level.h"
 
@@ -57,6 +58,13 @@ int main(int argc, char **argv)
 
     // Demo player's radar
     player->toggleRadar();
+
+    // Create a demo animation in memory
+    Sprite *doggy = gameMemory->newDoggy();
+
+    // Make the animation move
+    doggy->goRight();
+    doggy->show();
 
     // Add first level to the scene
     handler->addLevel(level1);

@@ -14,15 +14,15 @@ class Movable : public QObject, public QGraphicsItem
     private:
         bool looping;
         bool started;
-        bool goingUp;
-        bool goingDown;
-        bool goingLeft;
-        bool goingRight;
         float speed;
     protected:
         QPropertyAnimation *animation;
         QSize windowSize;
         QSize objectSize;
+        bool goingUp;
+        bool goingDown;
+        bool goingLeft;
+        bool goingRight;
     public:
         explicit Movable(QSize windowSize,
                          QSize objectSize);

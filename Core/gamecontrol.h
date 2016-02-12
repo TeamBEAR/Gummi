@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QStateMachine>
 #include <QLabel>
+#include <QGraphicsItem>
 #include "gameflow.h"
 #include "gamescene.h"
 #include "gameview.h"

@@ -1,6 +1,6 @@
 %{
 #include <string>
-#include "ast.h"
+//#include "ast.h"
 #include "parser.h"
 #define SAVE_TOKEN yylval.string = new std::string(yytext, yyleng)
 #define TOKEN(t) (yylval.token = t)
@@ -12,7 +12,7 @@ extern "C" int yywrap() { }
 
 %%
 
-[ tn]                 ;
+[ \r\t\n]*              ; //Ignore empty space
 [a-zA-Z_][a-zA-Z0-9_]*  SAVE_TOKEN; return TIDENTIFIER;
 [0-9]+.[0-9]*           SAVE_TOKEN; return TDOUBLE;
 [0-9]+                  SAVE_TOKEN; return TINTEGER;

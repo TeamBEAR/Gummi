@@ -10,6 +10,7 @@
 
 #include "Entities/agent.h"
 #include "Entities/radar.h"
+#include "Entities/sprite.h"
 
 #include "LevelStates/customevents.h"
 
@@ -153,5 +154,10 @@ void GameControl::refresh(){
     foreach (Agent *agent, gameMemory->getAgents()) {
         scene->addItem(agent);
     }
+
+    foreach(Sprite *sprite, gameMemory->getSprites()){
+        scene->addItem(sprite);
+    }
+
     view->viewport()->update();
 }
